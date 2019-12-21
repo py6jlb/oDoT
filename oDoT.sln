@@ -7,7 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{BD5428A6-E534-4A74-9DC8-3252B04E06DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BussinesLogic", "BussinesLogic\BussinesLogic.csproj", "{37949FA4-622F-43CB-9D9B-B563CE85F8B1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{37949FA4-622F-43CB-9D9B-B563CE85F8B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{202F77CF-1770-4637-B615-194E70582626}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,5 +60,17 @@ Global
 		{37949FA4-622F-43CB-9D9B-B563CE85F8B1}.Release|x64.Build.0 = Release|Any CPU
 		{37949FA4-622F-43CB-9D9B-B563CE85F8B1}.Release|x86.ActiveCfg = Release|Any CPU
 		{37949FA4-622F-43CB-9D9B-B563CE85F8B1}.Release|x86.Build.0 = Release|Any CPU
+		{202F77CF-1770-4637-B615-194E70582626}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{202F77CF-1770-4637-B615-194E70582626}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{202F77CF-1770-4637-B615-194E70582626}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{202F77CF-1770-4637-B615-194E70582626}.Debug|x64.Build.0 = Debug|Any CPU
+		{202F77CF-1770-4637-B615-194E70582626}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{202F77CF-1770-4637-B615-194E70582626}.Debug|x86.Build.0 = Debug|Any CPU
+		{202F77CF-1770-4637-B615-194E70582626}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{202F77CF-1770-4637-B615-194E70582626}.Release|Any CPU.Build.0 = Release|Any CPU
+		{202F77CF-1770-4637-B615-194E70582626}.Release|x64.ActiveCfg = Release|Any CPU
+		{202F77CF-1770-4637-B615-194E70582626}.Release|x64.Build.0 = Release|Any CPU
+		{202F77CF-1770-4637-B615-194E70582626}.Release|x86.ActiveCfg = Release|Any CPU
+		{202F77CF-1770-4637-B615-194E70582626}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
