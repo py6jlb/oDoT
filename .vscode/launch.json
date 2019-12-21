@@ -5,7 +5,7 @@
    "version": "0.2.0",
    "configurations": [
         {
-            "name": ".NET Core Launch (web)",
+            "name": ".NET Core Launch (web)-Firefox Develop",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
@@ -15,9 +15,17 @@
             "cwd": "${workspaceFolder}/WebApi",
             "stopAtEntry": false,
             // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
-            "serverReadyAction": {
-                "action": "openExternally",
-                "pattern": "^\\s*Now listening on:\\s+(https?://\\S+)"                
+            // "serverReadyAction": {
+            //     "action": "openExternally",
+            //     "pattern": "^\\s*Now listening on:\\s+(https?://\\S+)"                
+            // },
+            "launchBrowser": {
+                "enabled": true,
+                "args": "${auto-detect-url}",
+                "windows": {
+                    "command": "cmd.exe",
+                    "args": "/C start \"\" \"C:/Program Files/Firefox Developer Edition/firefox.exe\" ${auto-detect-url}"
+                }
             },
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development"
