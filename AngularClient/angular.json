@@ -24,11 +24,12 @@
             "tsConfig": "tsconfig.app.json",
             "aot": false,
             "assets": [
-              "src/icon.png",
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles/theme.scss",
+              "src/styles/styles.scss",
+              "src/styles/roboto-condensed.css"
             ],
             "scripts": []
           },

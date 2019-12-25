@@ -1,0 +1,19 @@
+mat-toolbar {
+  min-height: 64px;
+  max-height: 64px;
+}
+
+.toolbar-logo {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  align-items: center;
+}
+
+.toolbar-logo img {
+  margin-right: 10px;
+}
+
+.toggle-menu-button{
+  margin-right: 20px;
+}

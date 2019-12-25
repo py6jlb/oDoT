@@ -1,3 +1,9 @@
-<div class="content" role="main">
-    <router-outlet></router-outlet>
+<div class="app-container dark-theme">
+    <app-main-toolbar (menuToggled)="togleMenuEventHandler()" ></app-main-toolbar>    
+    <div class="content" role="main">
+        <mat-sidenav-container class="sidenav-container">
+            <app-menu-sidenav [menuIsopened]="menuIsOpened"></app-menu-sidenav>
+            <router-outlet></router-outlet>
+        </mat-sidenav-container>
+    </div>
 </div>
