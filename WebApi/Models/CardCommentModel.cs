@@ -6,7 +6,7 @@ namespace WebApi.Models
     {
         public string Id { get; set; }
         public string Text { get; set; }
-        public long CreateDateTime { get; set; }
+        public long CreateDateTimeInMiliseconds { get; set; }
         public bool NotUserComment { get; set; }
     }
 }

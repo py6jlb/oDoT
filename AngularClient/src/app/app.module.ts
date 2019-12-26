@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from './modules/material/material.module';
 import { MainToolbarModule } from './modules/main-toolbar/main-toolbar.module';
 import { MenuSidenavModule } from './modules/menu-sidenav/menu-sidenav.module';
+import { ContentModule } from './modules/content/content.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MenuSidenavModule } from './modules/menu-sidenav/menu-sidenav.module';
     MaterialModule,
     BrowserAnimationsModule,
     MainToolbarModule,
-    MenuSidenavModule
+    MenuSidenavModule,
+    ContentModule
   ],
   providers: [],
   bootstrap: [AppComponent]

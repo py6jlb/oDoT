@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { faCheck, faTrash, faTasks, faCog, faChartLine } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-menu-sidenav',
@@ -6,5 +7,9 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./menu-sidenav.component.scss']
 })
 export class MenuSidenavComponent {
-  @Input() menuIsopened: boolean;
+  faCheck=faCheck;
+  faTrash=faTrash;
+  faTasks=faTasks;
+  faCog=faCog;
+  faChartLine = faChartLine;
 }

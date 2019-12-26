@@ -7,9 +7,9 @@ namespace WebApi.Models
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public long CreateDateTime { get; set; }
-        public long? DeadLineDateTime { get; set; }
-        public long? StartPanicDateTime { get; set; }
+        public long CreateDateTimeInMiliseconds { get; set; }
+        public long? DeadLineDateTimeInMiliseconds { get; set; }
+        public long? StartPanicDateTimeInMiliseconds { get; set; }
         public long? PanicIntervalInMiliseconds { get; set; }
         public long? DoNotDisturbInMiliseconds { get; set; }
         public int DefferalCount { get; set; }

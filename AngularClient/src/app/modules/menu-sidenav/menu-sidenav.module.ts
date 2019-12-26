@@ -2,11 +2,14 @@ import { NgModule } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MaterialModule } from '../material/material.module';
 import { MenuSidenavComponent } from './components/menu-sidenav-component/menu-sidenav.comonent';
+import { AppRoutingModule } from 'src/app/routing/app-routing.module';
 
 @NgModule({
   imports: [
     MaterialModule,
-    FontAwesomeModule    
+    AppRoutingModule,
+    FontAwesomeModule,
+    FontAwesomeModule
   ],
   declarations:[
     MenuSidenavComponent

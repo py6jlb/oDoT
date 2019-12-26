@@ -1,0 +1,21 @@
+.card-board{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin: 20px;
+}
+
+.card-board-row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+mat-expansion-panel{
+    margin: 10px 0px;
+}
+
+.task-card {
+    max-width: 250px;
+    margin: 10px;
+  }

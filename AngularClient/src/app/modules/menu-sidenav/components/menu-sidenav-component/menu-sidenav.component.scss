@@ -1,3 +1,10 @@
-mat-sidenav{
-    padding: 5px 10px;
+mat-list a{
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
 }
+
+.active-list-item {
+    background-color: #616161 !important;
+}
+  

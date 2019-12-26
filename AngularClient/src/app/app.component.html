@@ -1,9 +1,11 @@
 <div class="app-container dark-theme">
     <app-main-toolbar (menuToggled)="togleMenuEventHandler()" ></app-main-toolbar>    
-    <div class="content" role="main">
-        <mat-sidenav-container class="sidenav-container">
-            <app-menu-sidenav [menuIsopened]="menuIsOpened"></app-menu-sidenav>
+    <mat-sidenav-container class="sidenav-container">
+        <mat-sidenav [opened]="menuIsOpened" [mode]="'side'" fixedTopGap="56">
+            <app-menu-sidenav></app-menu-sidenav>
+        </mat-sidenav>        
+        <mat-sidenav-content>
             <router-outlet></router-outlet>
-        </mat-sidenav-container>
-    </div>
+        </mat-sidenav-content>        
+    </mat-sidenav-container>
 </div>
