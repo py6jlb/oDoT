@@ -7,6 +7,7 @@ namespace WebApi.StartupExtensions
     public static class ServicesExtension{
         public static IServiceCollection AddServices(this IServiceCollection services){
             services.AddTransient<ICardService, CardService>();
+            services.AddTransient<ISettingsService, SettingsService>();
             return services;
         }
     } 

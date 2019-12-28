@@ -21,6 +21,7 @@ namespace WebApi
             services.AddLiteDb(connectionString);
             services.AddRepositories();
             services.AddServices();
+            services.SetInitialData(Configuration);
             services.AddControllers();
             services.AddHealthChecks();
         }

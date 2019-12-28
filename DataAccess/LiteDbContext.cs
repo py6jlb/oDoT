@@ -8,7 +8,7 @@ namespace DataAccess{
         public readonly BsonMapper Mapper;
         public LiteCollection<Card> Cards;
         public LiteCollection<CardComment> CardComments;
-        public LiteCollection<GlobalUserParameters> GlobalUsersParameters;
+        public LiteCollection<Settings> Settings;
         public LiteCollection<CardContent> CardContents;
 
 
@@ -21,7 +21,7 @@ namespace DataAccess{
                 Context = new LiteDatabase(connectionString, Mapper);                
                 Cards = Context.GetCollection<Card>("cards");
                 CardComments = Context.GetCollection<CardComment>("card_comments");
-                GlobalUsersParameters = Context.GetCollection<GlobalUserParameters>("global_users_parametrs");
+                Settings = Context.GetCollection<Settings>("settings");
                 CardContents = Context.GetCollection<CardContent>("card_contents");
 
             }
@@ -37,7 +37,7 @@ namespace DataAccess{
                 .Id(x=>x.Id)
                 .DbRef(x=>x.CardComments, "card_comments")
                 .DbRef(x=>x.Content, "card_contents");
-            mapper.Entity<GlobalUserParameters>().Id(x=>x.Id);
+            mapper.Entity<Settings>().Id(x=>x.Id);
             mapper.Entity<CardComment>().Id(x=>x.Id);
             mapper.Entity<CardContent>().Id(x=>x.Id);
             return mapper;

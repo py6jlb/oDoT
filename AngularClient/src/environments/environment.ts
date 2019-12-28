@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  configName: 'config/clientConfiguration.json',
+  configPath: 'assets/config/clientConfiguration.json',
 };
 
 /*
