@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace WebApi.Models
 {
-    public class Card
+    public class CardModel
     {
         public string Id { get; set; }
         public string Name { get; set; }

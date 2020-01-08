@@ -1,18 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using BusinessLogic.Abstraction;
 using BusinessLogic.DTO;
-using DataAccess.Entities;
-using DataAccess.Repositories.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Shared.Enums;
 using Shared.Helpers;
+using WebApi.Models;
 
 namespace WebApi.Controllers{
-
-    [ApiController]
-    [Route("[controller]")]
     public class CardsController : ControllerBase
     {
         private readonly ILogger<CardsController> _logger;
@@ -25,15 +22,13 @@ namespace WebApi.Controllers{
         }
         
         [HttpGet]
-        [Route("/")]
-        public IActionResult GetCards(){
-            var data = _cardService.GetCardById("864c261e-6df8-4788-8ac3-eb4c8a4a2bcf");
-            return Ok(data);
+        public IActionResult Get(){
+            var data = _cardService.GetCards();
+            return Ok(data != null && data.Any() ? data.ToArray() : new object[0]);
         }
 
-        [HttpGet]
-        [Route("/new")]
-        public IActionResult AddNewCards(){
+        [HttpPost]
+        public IActionResult Post(CardModel model){
             var data = new CardDto{
                 CreateDateTime = DateTimeHelper.ConverToMilisecond(DateTime.Now).Value,
                 Status = (int)CardStatusEnum.Open,

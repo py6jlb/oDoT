@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebApi.Hubs;
 using WebApi.StartupExtensions;
 
 namespace WebApi
@@ -23,6 +24,7 @@ namespace WebApi
             services.AddServices();
             services.SetInitialData(Configuration);
             services.AddControllers();
+            services.AddSignalR();
             services.AddHealthChecks();
         }
 
@@ -38,8 +40,10 @@ namespace WebApi
             //app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllers();
+                endpoints.MapControllerRoute("default", "{controller=Settings}/{action=Get}/{id?}");
                 endpoints.MapHealthChecks("/health");
+                endpoints.MapHub<ToDoHub>("todos");
             });
         }
     }

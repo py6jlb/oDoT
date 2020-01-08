@@ -113,5 +113,12 @@ namespace BusinessLogic{
                 
             return result;
         }
+
+        public IEnumerable<CardDto> GetCards()
+        {
+            var data = _cardRepo.GetCards();
+            var result = data.Select(x=> new CardDto(x));                
+            return result;
+        }
     }
 }
