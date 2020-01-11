@@ -23,7 +23,18 @@ namespace WebApi
             services.AddRepositories();
             services.AddServices();
             services.SetInitialData(Configuration);
-            services.AddControllers();
+            services.AddCors(c =>
+            {
+                c.AddPolicy("default", policy =>
+                        {
+                            policy.WithOrigins("http://localhost:5003",
+                                    "http://localhost:4200",
+                                    "http://localhost:5000")
+                                .AllowAnyHeader()
+                                .AllowAnyMethod();
+                        });
+            });
+            services.AddControllers();            
             services.AddSignalR();
             services.AddHealthChecks();
         }
@@ -35,6 +46,7 @@ namespace WebApi
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors("default");
             app.UseHttpsRedirection();
             app.UseRouting();
             //app.UseAuthorization();
@@ -44,7 +56,7 @@ namespace WebApi
                 endpoints.MapControllerRoute("default", "{controller=Settings}/{action=Get}/{id?}");
                 endpoints.MapHealthChecks("/health");
                 endpoints.MapHub<ToDoHub>("todos");
-            });
+            });            
         }
     }
 }

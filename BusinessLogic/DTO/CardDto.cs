@@ -25,7 +25,6 @@ namespace BusinessLogic.DTO
             CreateDateTime = DateTimeHelper.ConverToMilisecond(newCard.CreateDateTime).Value;
             DeadLineDateTime = DateTimeHelper.ConverToMilisecond(newCard.DeadLineDateTime.Value);
             DefferalCount = newCard.DefferalCount;
-            DoNotDisturbInMiliseconds = newCard.DoNotDisturbInMiliseconds;
             Name = newCard.Name;
             PanicIntervalInMiliseconds = newCard.PanicIntervalInMiliseconds;
             Priority = newCard.Priority;
@@ -39,7 +38,6 @@ namespace BusinessLogic.DTO
         public double? DeadLineDateTime { get; set; }
         public double? StartPanicDateTime { get; set; }
         public double? PanicIntervalInMiliseconds { get; set; }
-        public double? DoNotDisturbInMiliseconds { get; set; }
         public int DefferalCount { get; set; }
         public int Status { get; set; }
         public int Priority { get; set; }

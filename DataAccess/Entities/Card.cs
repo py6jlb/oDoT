@@ -9,7 +9,6 @@ namespace DataAccess.Entities{
         public DateTime? DeadLineDateTime {get;set;}
         public DateTime? StartPanicDateTime {get;set;}
         public double? PanicIntervalInMiliseconds {get;set;}
-        public double? DoNotDisturbInMiliseconds {get;set;}
         public int DefferalCount {get;set;}
         public int Status {get;set;}
         public int Priority {get;set;}

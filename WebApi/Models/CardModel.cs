@@ -7,11 +7,10 @@ namespace WebApi.Models
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public long CreateDateTimeInMiliseconds { get; set; }
-        public long? DeadLineDateTimeInMiliseconds { get; set; }
-        public long? StartPanicDateTimeInMiliseconds { get; set; }
-        public long? PanicIntervalInMiliseconds { get; set; }
-        public long? DoNotDisturbInMiliseconds { get; set; }
+        public double CreateDateTimeInMiliseconds { get; set; }
+        public double? DeadLineDateTimeInMiliseconds { get; set; }
+        public double? StartPanicDateTimeInMiliseconds { get; set; }
+        public double? PanicIntervalInMiliseconds { get; set; }
         public int DefferalCount { get; set; }
         public int Status { get; set; }
         public int Priority { get; set; }

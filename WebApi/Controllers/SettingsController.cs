@@ -3,6 +3,11 @@ using BusinessLogic.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WebApi.Models;
+using Shared;
+using Shared.Enums;
+using System;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace WebApi.Controllers{
     public class SettingsController : ControllerBase
@@ -23,18 +28,38 @@ namespace WebApi.Controllers{
         }
 
         [HttpPost]  
-        public IActionResult Post(SettingsModel model){
+        public IActionResult Post([FromBody]SettingsModel model){
             if(model == null){
                 return BadRequest();
             }
             var result = _settingsService.SaveSettings(new SettingsDto{
                 Id = model.Id,
                 DeadlineTimeSpanInMiliseconds = model.DeadlineTimeSpanInMiliseconds,
-                DoNotDisturbTimeSpanInMiliseconds = model.DoNotDisturbTimeSpanInMiliseconds,
                 PanicTimeSpanInMiliseconds = model.PanicTimeSpanInMiliseconds,
                 StartPanicForTimeSpanInMiliseconds = model.StartPanicForTimeSpanInMiliseconds
             });
             return Ok(result);
         }
+        
+        [HttpGet]
+        public IActionResult Statuses(){
+            var data = (CardStatusEnum[])Enum.GetValues(typeof(CardStatusEnum));
+            var result = new List<CardStatusEnum>(data).Select(x=> new{
+                Key = (int)x,
+                Value = x.GetEnumDescription()
+            });
+            return Ok(result);
+        }
+
+        [HttpGet]
+        public IActionResult Priority(){
+            var data = (CardPriorityEnum[])Enum.GetValues(typeof(CardPriorityEnum));
+            var result = new List<CardPriorityEnum>(data).Select(x=> new{
+                Key = (int)x,
+                Value = x.GetEnumDescription()
+            });
+            return Ok(result);
+        }
+
     }
 }

@@ -9,7 +9,6 @@ export class CardModel{
     deadLineDateTime : Date;
     startPanicDateTime : Date;
     panicIntervalInMiliseconds: number;
-    doNotDisturbInMiliseconds: number;
     defferalCount: number;
     status: number;
     priority: number;
@@ -23,7 +22,6 @@ export class CardModel{
         this.deadLineDateTime = data.deadLineDateTimeInMiliseconds != null ? new Date(data.deadLineDateTimeInMiliseconds) : null;
         this.startPanicDateTime = data.startPanicDateTimeInMiliseconds != null ? new Date(data.startPanicDateTimeInMiliseconds) : null;
         this.panicIntervalInMiliseconds = data.panicIntervalInMiliseconds;
-        this.doNotDisturbInMiliseconds = data.doNotDisturbInMiliseconds;
         this.defferalCount = data.defferalCount;
         this.status = data.status;
         this.priority = data.priority;

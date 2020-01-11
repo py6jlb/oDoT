@@ -54,7 +54,6 @@ namespace BusinessLogic{
                 CreateDateTime = DateTimeHelper.MilisecondToDateTime(newCard.CreateDateTime).Value,
                 DeadLineDateTime = newCard.DeadLineDateTime.HasValue ? DateTimeHelper.MilisecondToDateTime(newCard.DeadLineDateTime.Value) : null,
                 DefferalCount = newCard.DefferalCount,
-                DoNotDisturbInMiliseconds = newCard.DoNotDisturbInMiliseconds,
                 Name = newCard.Name,
                 PanicIntervalInMiliseconds = newCard.PanicIntervalInMiliseconds,
                 Priority = newCard.Priority,

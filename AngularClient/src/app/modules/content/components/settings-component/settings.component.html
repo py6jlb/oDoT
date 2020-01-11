@@ -1,0 +1,60 @@
+<form class="settings-form" (ngSubmit)="submitForm(formDirective)" [formGroup]="settingsForm" #formDirective="ngForm">
+    <div class="settings-form-row">
+        <h3>Срок выполнения задачи(по умолчанию)</h3>
+    </div>
+    <div class="settings-form-row">
+        <mat-form-field floatLabel="auto">
+            <input matInput formControlName="deadlineDays" placeholder="Дней" required>
+            <!-- <mat-error *ngIf="newDocumentForm.controls['reportName'].hasError('required')">Имя документа не может быть пустым</mat-error>  -->
+        </mat-form-field>
+        <mat-form-field floatLabel="auto">
+            <input matInput formControlName="deadlineHours" placeholder="Часов" required>
+            <!-- <mat-error *ngIf="newDocumentForm.controls['reportName'].hasError('required')">Имя документа не может быть пустым</mat-error>  -->
+        </mat-form-field>
+        <mat-form-field floatLabel="auto">
+            <input matInput formControlName="deadlineMinuts" placeholder="Минут" required>
+            <!-- <mat-error *ngIf="newDocumentForm.controls['reportName'].hasError('required')">Имя документа не может быть пустым</mat-error>  -->
+        </mat-form-field>
+    </div>
+
+    <div class="settings-form-row">
+        <h3>С какой периодичностью напоминать о задаче(по умолчанию)</h3>
+    </div>
+    <div class="settings-form-row">
+        <mat-form-field floatLabel="auto">
+            <input matInput formControlName="panicDays" placeholder="Дней" required>
+            <!-- <mat-error *ngIf="newDocumentForm.controls['reportName'].hasError('required')">Имя документа не может быть пустым</mat-error>  -->
+        </mat-form-field>
+        <mat-form-field floatLabel="auto">
+            <input matInput formControlName="panicHours" placeholder="Часов" required>
+            <!-- <mat-error *ngIf="newDocumentForm.controls['reportName'].hasError('required')">Имя документа не может быть пустым</mat-error>  -->
+        </mat-form-field>
+        <mat-form-field floatLabel="auto">
+            <input matInput formControlName="panicMinuts" placeholder="Минут" required>
+            <!-- <mat-error *ngIf="newDocumentForm.controls['reportName'].hasError('required')">Имя документа не может быть пустым</mat-error>  -->
+        </mat-form-field>
+    </div>
+
+    <div class="settings-form-row">
+        <h3>За сколько надо начать напоминать о задаче(по умолчанию)</h3>
+    </div>
+    <div class="settings-form-row">
+        <mat-form-field floatLabel="auto">
+            <input matInput formControlName="startPanicDays" placeholder="Дней" required>
+            <!-- <mat-error *ngIf="newDocumentForm.controls['reportName'].hasError('required')">Имя документа не может быть пустым</mat-error>  -->
+        </mat-form-field>
+        <mat-form-field floatLabel="auto">
+            <input matInput formControlName="startPanicHours" placeholder="Часов" required>
+            <!-- <mat-error *ngIf="newDocumentForm.controls['reportName'].hasError('required')">Имя документа не может быть пустым</mat-error>  -->
+        </mat-form-field>
+        <mat-form-field floatLabel="auto">
+            <input matInput formControlName="startPanicMinuts" placeholder="Минут" required>
+            <!-- <mat-error *ngIf="newDocumentForm.controls['reportName'].hasError('required')">Имя документа не может быть пустым</mat-error>  -->
+        </mat-form-field>
+    </div>
+    <div class="settings-form-row">
+        <button mat-raised-button type="submit" [disabled]="!settingsForm.valid">
+            Сохранить настройки
+        </button>
+    </div>
+</form>

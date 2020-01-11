@@ -1,0 +1,60 @@
+<div class="new-task-container">
+    <div class="new-task-container-row">
+        <h2>Добавление новой задачи</h2>
+    </div>
+    <form lass="new-task-form" [formGroup]="newTaskForm">
+        <div class="new-task-form-row">
+            <mat-form-field floatLabel="auto" class="full-width-input">
+                <input matInput formControlName="taskName" placeholder="Название задачи" required>
+            </mat-form-field>
+        </div>
+        <div class="new-task-form-row">
+            <mat-form-field floatLabel="auto" class="full-width-input">
+                <textarea matInput formControlName="taskText" placeholder="Описание задачи"></textarea>
+            </mat-form-field>
+        </div>
+
+        <div class="new-task-form-row">
+            <mat-form-field class="full-width-input">
+                <mat-label>Приоритет задачи</mat-label>
+                <mat-select formControlName="taskPriority">
+                    <mat-option *ngFor="let item of dataService.priority" [value]="item.key">{{item.value}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="new-task-form-row two-element-in-row">
+            <mat-form-field>
+                <input matInput [ngxMatDatetimePicker]="deadLineDate" type="text" placeholder="Выполнить до:"
+                    formControlName="deadlineDate">
+                <mat-datepicker-toggle matSuffix [for]="deadLineDate"></mat-datepicker-toggle>
+                <ngx-mat-datetime-picker #deadLineDate></ngx-mat-datetime-picker>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [ngxMatDatetimePicker]="startPanicDate" type="text" placeholder="Начать уведомлять с:"
+                    formControlName="startPanicDate">
+                <mat-datepicker-toggle matSuffix [for]="startPanicDate"></mat-datepicker-toggle>
+                <ngx-mat-datetime-picker #startPanicDate></ngx-mat-datetime-picker>
+            </mat-form-field>
+        </div>
+        <div class="new-task-form-row">
+            <h3>С какой периодичностью напоминать о задаче</h3>
+        </div>
+        <div class="new-task-form-row three-element-in-row">
+            <mat-form-field floatLabel="auto" >
+                <input matInput formControlName="panicDays" placeholder="Дней" required>
+            </mat-form-field>
+            <mat-form-field floatLabel="auto" >
+                <input matInput formControlName="panicHours" placeholder="Часов" required>
+            </mat-form-field>
+            <mat-form-field floatLabel="auto" >
+                <input matInput formControlName="panicMinuts" placeholder="Минут" required>
+            </mat-form-field>
+        </div>
+        <div class="new-task-form-row">
+            <span class="spacer"></span>
+            <button mat-raised-button mat-dialog-close type="reset" style="margin-right: 10px;">Отмена</button>
+            <button mat-raised-button color="primary" (click)="addTask()">Добавить</button>
+        </div>
+    </form>
+</div>

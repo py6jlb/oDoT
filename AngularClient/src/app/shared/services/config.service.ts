@@ -11,6 +11,10 @@ export class ConfigService {
     public config: IConfiguration;
 
     constructor(private http: HttpClient) { 
-        this.http.get<IConfiguration>(environment.configPath).subscribe(x=> this.config = x);
+        this.loadConfig().subscribe(x=> this.config = x);
+    }
+
+    public loadConfig(){
+        return this.http.get<IConfiguration>(environment.configPath);
     }
 }

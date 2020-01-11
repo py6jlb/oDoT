@@ -22,7 +22,6 @@ namespace BusinessLogic{
         {
             var res = _settingsRepo.AddSettings(new Settings{
                 DeadlineTimeSpanInMiliseconds = newData.DeadlineTimeSpanInMiliseconds,
-                DoNotDisturbTimeSpanInMiliseconds = newData.DeadlineTimeSpanInMiliseconds,
                 PanicTimeSpanInMiliseconds = newData.PanicTimeSpanInMiliseconds,
                 StartPanicForTimeSpanInMiliseconds = newData.StartPanicForTimeSpanInMiliseconds
             });

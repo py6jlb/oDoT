@@ -9,7 +9,6 @@ namespace BusinessLogic.DTO
         public SettingsDto(Settings newData){
             Id = newData.Id.ToString();
             DeadlineTimeSpanInMiliseconds = newData.DeadlineTimeSpanInMiliseconds;
-            DoNotDisturbTimeSpanInMiliseconds = newData.DeadlineTimeSpanInMiliseconds;
             PanicTimeSpanInMiliseconds = newData.PanicTimeSpanInMiliseconds;
             StartPanicForTimeSpanInMiliseconds = newData.StartPanicForTimeSpanInMiliseconds;
         }
@@ -17,7 +16,6 @@ namespace BusinessLogic.DTO
         public string Id {get;set;}
         public double? DeadlineTimeSpanInMiliseconds {get;set;}
         public double? PanicTimeSpanInMiliseconds {get;set;}
-        public double? DoNotDisturbTimeSpanInMiliseconds {get;set;}
         public double? StartPanicForTimeSpanInMiliseconds {get;set;}
     }
 }

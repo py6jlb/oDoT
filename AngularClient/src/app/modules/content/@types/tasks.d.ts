@@ -5,7 +5,6 @@ export interface ICardModel{
     deadLineDateTimeInMiliseconds: number;
     startPanicDateTimeInMiliseconds: number;
     panicIntervalInMiliseconds: number;
-    doNotDisturbInMiliseconds: number;
     defferalCount: number;
     status: number;
     priority: number;
@@ -23,4 +22,16 @@ export interface ICardCommentModel{
     text: string;
     createDateTimeInMiliseconds: number;
     notUserComment: boolean;
+}
+
+export interface ISettingsModel{
+    id: string;
+    deadlineTimeSpanInMiliseconds: number;
+    panicTimeSpanInMiliseconds: number;
+    startPanicForTimeSpanInMiliseconds: number;
+}
+
+export interface IKeyValuePair<T, V>{
+    key: T,
+    value: V
 }

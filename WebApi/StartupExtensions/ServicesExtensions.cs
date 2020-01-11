@@ -24,7 +24,6 @@ namespace WebApi.StartupExtensions
                 var dataFromConfig = config.GetSection("DefaultSettings").Get<DefaultSettings>();
                 var newSettings = new SettingsDto{
                     DeadlineTimeSpanInMiliseconds = dataFromConfig.DefaultDeadlineTimeSpanInSeconds*1000,
-                    DoNotDisturbTimeSpanInMiliseconds = dataFromConfig.DefaultDoNotDisturbTimeSpanInSeconds*1000,
                     PanicTimeSpanInMiliseconds = dataFromConfig.DefaultPanicTimeSpanInSeconds*1000,
                     StartPanicForTimeSpanInMiliseconds = dataFromConfig.DefaultStartPanicForTimeSpanInSeconds*1000
                 };
