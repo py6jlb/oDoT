@@ -23,13 +23,13 @@ namespace BusinessLogic.DTO
                 Text = newCard.Content.Text
             };
             CreateDateTime = DateTimeHelper.ConverToMilisecond(newCard.CreateDateTime).Value;
-            DeadLineDateTime = DateTimeHelper.ConverToMilisecond(newCard.DeadLineDateTime.Value);
+            DeadLineDateTime = DateTimeHelper.ConverToMilisecond(newCard.DeadLineDateTime);
             DefferalCount = newCard.DefferalCount;
             Name = newCard.Name;
             PanicIntervalInMiliseconds = newCard.PanicIntervalInMiliseconds;
             Priority = newCard.Priority;
             Status = newCard.Status;
-            StartPanicDateTime = DateTimeHelper.ConverToMilisecond(newCard.StartPanicDateTime.Value);
+            StartPanicDateTime = DateTimeHelper.ConverToMilisecond(newCard.StartPanicDateTime);
         }
 
         public string Id { get; set; }

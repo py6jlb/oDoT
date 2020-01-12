@@ -28,5 +28,11 @@ namespace DataAccess.Repositories{
            var data = _context.Cards.IncludeAll().FindAll();
            return data;
         }
+
+        public bool UpdateCard(Card card)
+        {
+            var result = _context.Cards.Update(card);
+            return result;
+        }
     }
 }

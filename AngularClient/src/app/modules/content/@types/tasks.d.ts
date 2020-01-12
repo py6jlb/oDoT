@@ -1,9 +1,9 @@
 export interface ICardModel{
     id: string;
     name: string;
-    createDateTimeInMiliseconds: number;
-    deadLineDateTimeInMiliseconds: number;
-    startPanicDateTimeInMiliseconds: number;
+    createDateTime: number;
+    deadLineDateTime: number;
+    startPanicDateTime: number;
     panicIntervalInMiliseconds: number;
     defferalCount: number;
     status: number;
@@ -20,7 +20,7 @@ export interface ICardContentModel{
 export interface ICardCommentModel{
     id: string;
     text: string;
-    createDateTimeInMiliseconds: number;
+    createDateTime: number;
     notUserComment: boolean;
 }
 

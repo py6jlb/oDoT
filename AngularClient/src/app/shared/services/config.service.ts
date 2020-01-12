@@ -10,11 +10,9 @@ export interface IConfiguration{
 export class ConfigService {
     public config: IConfiguration;
 
-    constructor(private http: HttpClient) { 
-        this.loadConfig().subscribe(x=> this.config = x);
-    }
+    constructor(private http: HttpClient) {}
 
     public loadConfig(){
-        return this.http.get<IConfiguration>(environment.configPath);
+        return this.http.get<IConfiguration>(environment.configPath).toPromise().then((data: any) => this.config = data);
     }
 }

@@ -6,6 +6,7 @@ using BusinessLogic.DTO;
 using DataAccess.Entities;
 using DataAccess.Repositories.Abstractions;
 using Microsoft.Extensions.Logging;
+using Shared.Enums;
 using Shared.Helpers;
 
 namespace BusinessLogic{
@@ -117,6 +118,31 @@ namespace BusinessLogic{
         {
             var data = _cardRepo.GetCards();
             var result = data.Select(x=> new CardDto(x));                
+            return result;
+        }
+
+        public IEnumerable<CardDto> GetCardsByStatus(int status)
+        {
+            //TODO: добавить нормальный метод репозтория, чтоб не вытягивать все карточки на каждый запрос
+            var data = _cardRepo.GetCards();
+            var result = data.Where(x=>x.Status == status).Select(x=> new CardDto(x));                
+            return result;
+        }
+
+        public bool DeleteCard(string guid)
+        {
+            var parsedGuid = Guid.Parse(guid);
+            var data = _cardRepo.GetCardById(parsedGuid);
+            data.Status = (int)CardStatusEnum.Deleted;
+            var result = _cardRepo.UpdateCard(data);                
+            return result;
+        }
+
+        public bool CloseCard(string guid){
+            var parsedGuid = Guid.Parse(guid);
+            var data = _cardRepo.GetCardById(parsedGuid);
+            data.Status = (int)CardStatusEnum.Close;
+            var result = _cardRepo.UpdateCard(data);                
             return result;
         }
     }

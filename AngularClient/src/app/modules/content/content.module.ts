@@ -9,12 +9,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewTaskComponent } from './components/new-task-component/new-task.component';
 import { CommonModule } from '@angular/common';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from 'ngx-mat-datetime-picker';
+import { CardPreviewComponent } from './components/card-preview-component/card-preview.component';
 
 @NgModule({
   declarations: [
     TaskListComponent, 
     SettingsComponent, 
-    NewTaskComponent
+    NewTaskComponent,
+    CardPreviewComponent
   ],
   exports: [
     TaskListComponent, 

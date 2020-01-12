@@ -10,6 +10,6 @@ export class CardCommentModel{
         this.id = data.id;
         this.text = data.text;
         this.notUserComment = data.notUserComment,
-        this.createDateTime = new Date(data.createDateTimeInMiliseconds);
+        this.createDateTime = new Date(data.createDateTime);
     }
 }

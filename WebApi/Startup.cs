@@ -15,7 +15,7 @@ namespace WebApi
         {
             Configuration = configuration;
         }
-        
+
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
@@ -27,14 +27,12 @@ namespace WebApi
             {
                 c.AddPolicy("default", policy =>
                         {
-                            policy.WithOrigins("http://localhost:5003",
-                                    "http://localhost:4200",
-                                    "http://localhost:5000")
+                            policy.WithOrigins("http://localhost:4200")
                                 .AllowAnyHeader()
                                 .AllowAnyMethod();
                         });
             });
-            services.AddControllers();            
+            services.AddControllers();
             services.AddSignalR();
             services.AddHealthChecks();
         }
@@ -56,7 +54,7 @@ namespace WebApi
                 endpoints.MapControllerRoute("default", "{controller=Settings}/{action=Get}/{id?}");
                 endpoints.MapHealthChecks("/health");
                 endpoints.MapHub<ToDoHub>("todos");
-            });            
+            });
         }
     }
 }

@@ -5,6 +5,8 @@ namespace Shared.Enums{
         [Description("Ожидает исполнения")]
         Open = 1,
         [Description("Исполнено")]
-        Close = 2
+        Close = 2,
+        [Description("Удалена")]
+        Deleted = 3
     }
 }

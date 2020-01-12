@@ -1,39 +1,74 @@
-import { Component, OnInit } from '@angular/core';
-import { ContentDataService } from '../../services/content-data.service';
-import { CardModel } from '../../models/card.model';
-import { ConfigService } from 'src/app/shared/services/config.service';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
-import { NewTaskComponent } from '../new-task-component/new-task.component';
+import { Component, OnInit } from "@angular/core";
+import { ContentDataService } from "../../services/content-data.service";
+import { CardModel } from "../../models/card.model";
+import { ConfigService } from "src/app/shared/services/config.service";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { MatDialogConfig, MatDialog } from "@angular/material/dialog";
+import { NewTaskComponent } from "../new-task-component/new-task.component";
+import { TaskStatusEnum } from "src/app/shared/enums/taskStatusEnum";
+import { TaskPriorityEnum } from "src/app/shared/enums/taskPriorityEnum";
 
 @Component({
-    selector: 'app-task-list',
-    templateUrl: './task-list.component.html',
-    styleUrls: ['./task-list.component.scss']
+  selector: "app-task-list",
+  templateUrl: "./task-list.component.html",
+  styleUrls: ["./task-list.component.scss"]
 })
+export class TaskListComponent implements OnInit {
+  taskWithHigthPriority: CardModel[] = [];
+  taskWithNormalPriority: CardModel[] = [];
+  taskWithPanic: CardModel[] = [];
+  faPlus = faPlus;
 
-export class TaskListComponent implements OnInit {    
-    taskWithHigthPriority:CardModel[] = [];
-    taskWithnormalPriority:CardModel[] = [];
-    taskWithPanic:CardModel[] = [];
-    faPlus = faPlus;
-    
-    constructor(
-        private dataService: ContentDataService, 
-        private config: ConfigService,
-        private dialog: MatDialog
-        ) { }
+  constructor(
+    private dataService: ContentDataService,
+    private config: ConfigService,
+    private dialog: MatDialog
+  ) {}
 
-    ngOnInit() { }
+  ngOnInit() {
+    this.loadData();
+  }
 
-    openNewTaskDialog(){
-        const dialogConfig = new MatDialogConfig();
-        dialogConfig.data = {data: 1};
-        dialogConfig.width = '1000px';
-        dialogConfig.disableClose = true;
-        const dialogRef = this.dialog.open(NewTaskComponent, dialogConfig);
-        dialogRef.afterClosed().subscribe(x=>{
-            console.log(x)
-        })
-    }
+  openNewTaskDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = { data: 1 };
+    dialogConfig.width = "1000px";
+    dialogConfig.disableClose = true;
+    const dialogRef = this.dialog.open(NewTaskComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(x=>{
+        if(x.priority === TaskPriorityEnum.Normal)
+            this.taskWithNormalPriority.push(new CardModel(x));
+
+        if(x.priority === TaskPriorityEnum.Higth)
+            this.taskWithHigthPriority.push(new CardModel(x));
+        //console.log(x)
+    })
+  }
+
+  private loadData() {
+    this.dataService.getTasksByStatus(TaskStatusEnum.Open).subscribe(x => {
+      //console.log(x)
+      if (x != null && x.length > 0) {
+        let normal = x.filter(x => x.priority === TaskPriorityEnum.Normal);
+        let higth = x.filter(x => x.priority === TaskPriorityEnum.Higth);
+
+        if (normal != null && normal.length > 0)
+          this.taskWithNormalPriority = normal.map(x => {
+            return new CardModel(x);
+          });
+
+        if (higth != null && higth.length > 0)
+          this.taskWithHigthPriority = higth.map(x => {
+            return new CardModel(x);
+          });
+
+        //console.log(this.taskWithHigthPriority, this.taskWithNormalPriority)
+      }
+    });
+  }
+
+  public taskDeleted(id: string){
+      this.taskWithHigthPriority = this.taskWithHigthPriority.filter(x=>x.id!==id);
+      this.taskWithNormalPriority = this.taskWithNormalPriority.filter(x=>x.id!==id);
+  }
 }

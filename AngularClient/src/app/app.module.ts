@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { AppRoutingModule } from './routing/app-routing.module';
 import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
@@ -9,6 +9,11 @@ import { MainToolbarModule } from './modules/main-toolbar/main-toolbar.module';
 import { MenuSidenavModule } from './modules/menu-sidenav/menu-sidenav.module';
 import { ContentModule } from './modules/content/content.module';
 import { ConfigService } from './shared/services/config.service';
+
+
+export function loadConfig(configService: ConfigService) {
+  return () => configService.loadConfig();
+}
 
 @NgModule({
   declarations: [
@@ -24,7 +29,17 @@ import { ConfigService } from './shared/services/config.service';
     MenuSidenavModule,
     ContentModule
   ],
-  providers: [ConfigService],
+  providers: [
+    ConfigService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: loadConfig,
+      deps: [ConfigService],
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  
+ }

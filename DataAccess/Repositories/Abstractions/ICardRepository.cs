@@ -8,5 +8,6 @@ namespace DataAccess.Repositories.Abstractions{
         IEnumerable<Card> GetCards();
         Card GetCardById(Guid id);
         Card AddCard(Card newCard);
+        bool UpdateCard(Card card);
     }
 }

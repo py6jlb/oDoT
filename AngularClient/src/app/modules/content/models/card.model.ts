@@ -18,9 +18,9 @@ export class CardModel{
     constructor(data: ICardModel){
         this.id = data.id;
         this.name = data.name;
-        this.createDateTime = new Date(data.createDateTimeInMiliseconds);
-        this.deadLineDateTime = data.deadLineDateTimeInMiliseconds != null ? new Date(data.deadLineDateTimeInMiliseconds) : null;
-        this.startPanicDateTime = data.startPanicDateTimeInMiliseconds != null ? new Date(data.startPanicDateTimeInMiliseconds) : null;
+        this.createDateTime = new Date(data.createDateTime);
+        this.deadLineDateTime = data.deadLineDateTime != null ? new Date(data.deadLineDateTime) : null;
+        this.startPanicDateTime = data.startPanicDateTime != null ? new Date(data.startPanicDateTime) : null;
         this.panicIntervalInMiliseconds = data.panicIntervalInMiliseconds;
         this.defferalCount = data.defferalCount;
         this.status = data.status;

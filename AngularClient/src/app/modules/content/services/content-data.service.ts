@@ -7,31 +7,23 @@ import { forkJoin } from 'rxjs';
 
 @Injectable()
 export class ContentDataService {    
-    public baseUrl: string;
     public statuses: IKeyValuePair<number, string>[] = [];
     public priority: IKeyValuePair<number, string>[] = [];
 
-    constructor(private http: HttpClient, private config: ConfigService) { 
-        this.config.loadConfig().subscribe(x=>{
-            this.baseUrl = x.baseUrl;
-            this.preloadData().subscribe(z=>{
-                this.statuses = z[0];
-                this.priority = z[1];
-            });
-        });        
+    constructor(private http: HttpClient, private configService: ConfigService) { 
+        this.preloadData().subscribe(z=>{
+            this.statuses = z[0];
+            this.priority = z[1];
+        });      
     }  
 
-    public getCard(){
-        return [];
-    }
-
     public getStatuses(){
-        var result = this.http.get<IKeyValuePair<number, string>[]>(`${this.baseUrl}/Settings/Statuses`)
+        var result = this.http.get<IKeyValuePair<number, string>[]>(`${this.configService.config.baseUrl}/Settings/Statuses`)
         return result;
     }
 
     public getPriority(){
-        var result = this.http.get<IKeyValuePair<number, string>[]>(`${this.baseUrl}/Settings/Priority`)
+        var result = this.http.get<IKeyValuePair<number, string>[]>(`${this.configService.config.baseUrl}/Settings/Priority`)
         return result;
     }
 
@@ -41,18 +33,35 @@ export class ContentDataService {
     }
 
     public getSettings(){
-        var result = this.http.get<ISettingsModel>(`${this.baseUrl}/Settings`)
+        var result = this.http.get<ISettingsModel>(`${this.configService.config.baseUrl}/Settings`)
         return result;
     }
 
     public saveSettings(data:SettingsModel){
-        var result = this.http.post(`${this.baseUrl}/Settings`, data)
+        var result = this.http.post(`${this.configService.config.baseUrl}/Settings`, data)
         return result;
     }
 
     public addNewTask(data: any){
         console.log(data)        
-        var result = this.http.post(`${this.baseUrl}/Cards/Post`, data)
+        var result = this.http.post<ICardModel>(`${this.configService.config.baseUrl}/Cards/Post`, data)
+        return result;
+    }
+
+    public getTasksByStatus(status: number){
+        var result = this.http.get<ICardModel[]>(`${this.configService.config.baseUrl}/Cards/GetByStatus?status=${status}`)       
+        return result;
+    }
+
+    public deleteTask(id: string){
+        console.log(id);
+        var result = this.http.get<boolean>(`${this.configService.config.baseUrl}/Cards/DeleteCard?id=${id}`)       
+        return result;
+    }
+
+    public closeTask(id: string){
+        console.log(id);
+        var result = this.http.get<boolean>(`${this.configService.config.baseUrl}/Cards/CloseCard?id=${id}`)       
         return result;
     }
 }

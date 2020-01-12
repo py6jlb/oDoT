@@ -93,26 +93,27 @@ export class NewTaskComponent implements OnInit {
 
     addTask(){
       var data = {
-        Name: this.newTaskForm.controls['taskName'].value,
-        CreateDateTimeInMiliseconds: Date.now(),
-        DeadLineDateTimeInMiliseconds: this.newTaskForm.controls['deadlineDate'].value._d != null ?
+        id: null,
+        name: this.newTaskForm.controls['taskName'].value,
+        createDateTime: Date.now(),
+        deadLineDateTime: this.newTaskForm.controls['deadlineDate'].value._d != null ?
                         this.newTaskForm.controls['deadlineDate'].value._d.getTime() 
                         : this.newTaskForm.controls['deadlineDate'].value.getTime(),
-        StartPanicDateTimeInMiliseconds: this.newTaskForm.controls['startPanicDate'].value._d != null ?
+        startPanicDateTime: this.newTaskForm.controls['startPanicDate'].value._d != null ?
                         this.newTaskForm.controls['startPanicDate'].value._d.getTime() 
                         : this.newTaskForm.controls['startPanicDate'].value.getTime(),
-        PanicIntervalInMiliseconds: this.newTaskForm.controls['panicDays'].value * this.milisecInDay +
+        panicIntervalInMiliseconds: this.newTaskForm.controls['panicDays'].value * this.milisecInDay +
                           this.newTaskForm.controls['panicHours'].value * this.milisecInHour +
                           this.newTaskForm.controls['panicMinuts'].value * this.milisecInMin,
-        DefferalCount: 0,
-        Status: 1,
-        Priority: this.newTaskForm.controls['taskPriority'].value,
-        Content: {Text: this.newTaskForm.controls['taskText'].value},
-        CardComments:[]
-      }
+        defferalCount: 0,
+        status: 1,
+        priority: this.newTaskForm.controls['taskPriority'].value,
+        content: {id: null, text: this.newTaskForm.controls['taskText'].value} as ICardContentModel,
+        cardComments:[]
+      } as ICardModel
 
       this.dataService.addNewTask(data).subscribe(x=>{
-        this.dialogRef.close();
+        this.dialogRef.close(x);
       })
     }
 

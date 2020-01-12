@@ -1,17 +1,9 @@
 <div class="card-board">
-  <mat-expansion-panel [expanded]="true" style="margin-bottom: 10px;">
-    <mat-expansion-panel-header>
-      <mat-panel-title>Задачи с высоким приоритетом</mat-panel-title>
-    </mat-expansion-panel-header>
-  </mat-expansion-panel>
-
-  <mat-expansion-panel [expanded]="true" style="margin-bottom: 10px;">
-    <mat-expansion-panel-header>
-      <mat-panel-title>Задачи с нормальным приоритетом</mat-panel-title>
-    </mat-expansion-panel-header>
-  </mat-expansion-panel>
-
-  <button class="plus-button" (click)="openNewTaskDialog()">
-    <fa-icon [icon]="faPlus" [fixedWidth]="true" size="2x"></fa-icon>
+    <div class="card-board-row">
+    <app-card-preview *ngFor="let item of taskWithHigthPriority" (taskDeleted)="taskDeleted($event)" [cardData]="item"></app-card-preview>
+    <app-card-preview *ngFor="let item of taskWithNormalPriority" (taskDeleted)="taskDeleted($event)" [cardData]="item"></app-card-preview>
+</div>
+  <button class="plus-button" mat-fab color="primary"  (click)="openNewTaskDialog()">
+    <fa-icon [icon]="faPlus" [fixedWidth]="true" size="lg"></fa-icon>
   </button>
 </div>
