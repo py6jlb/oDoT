@@ -145,5 +145,28 @@ namespace BusinessLogic{
             var result = _cardRepo.UpdateCard(data);                
             return result;
         }
+
+         public CardDto UpdateCard(CardDto card)
+        {
+            var parsedGuid = Guid.Parse(card.Id);
+            var cardFromDb = _cardRepo.GetCardById(parsedGuid);
+            
+            cardFromDb.DeadLineDateTime = card.DeadLineDateTime.HasValue ? DateTimeHelper.MilisecondToDateTime(card.DeadLineDateTime.Value) : null,
+            cardFromDb.DefferalCount = card.DefferalCount;
+            cardFromDb.Priority = card.Priority;
+            cardFromDb.Status = card.Status;
+
+            var result = _cardRepo.UpdateCard(cardFromDb);
+
+            if(result){
+                var dataForResult = _cardRepo.GetCardById(parsedGuid);
+                return new CardDto(dataForResult);
+            }else{
+                return null;
+            }            
+        }
+
+
+        
     }
 }

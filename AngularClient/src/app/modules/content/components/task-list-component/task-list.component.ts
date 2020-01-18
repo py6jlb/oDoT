@@ -14,10 +14,9 @@ import { TaskPriorityEnum } from "src/app/shared/enums/taskPriorityEnum";
   styleUrls: ["./task-list.component.scss"]
 })
 export class TaskListComponent implements OnInit {
-  taskWithHigthPriority: CardModel[] = [];
-  taskWithNormalPriority: CardModel[] = [];
-  taskWithPanic: CardModel[] = [];
+  tasks: CardModel[] = [];
   faPlus = faPlus;
+  dateNow = Date.now();
 
   constructor(
     private dataService: ContentDataService,
@@ -26,6 +25,10 @@ export class TaskListComponent implements OnInit {
 
   ngOnInit() {
     this.loadData();
+
+    setInterval(() => {
+      this.dateNow = Date.now();
+    }, 1000);
   }
 
   openNewTaskDialog() {
@@ -35,44 +38,57 @@ export class TaskListComponent implements OnInit {
     dialogConfig.disableClose = true;
     const dialogRef = this.dialog.open(NewTaskComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(x => {
-      if (x.priority === TaskPriorityEnum.Normal)
-        this.taskWithNormalPriority.push(new CardModel(x));
+      if (x != null)
+        this.tasks.push(new CardModel(x));
 
-      if (x.priority === TaskPriorityEnum.Higth)
-        this.taskWithHigthPriority.push(new CardModel(x));
     })
   }
 
   private loadData() {
     this.dataService.getTasksByStatus(TaskStatusEnum.Open).subscribe(x => {
       if (x != null && x.length > 0) {
-        let normal = x.filter(x => x.priority === TaskPriorityEnum.Normal);
-        let higth = x.filter(x => x.priority === TaskPriorityEnum.Higth);
-
-        if (normal != null && normal.length > 0)
-          this.taskWithNormalPriority = normal.map(x => {
-            return new CardModel(x);
-          });
-
-        if (higth != null && higth.length > 0)
-          this.taskWithHigthPriority = higth.map(x => {
-            return new CardModel(x);
-          });
+        this.tasks = x.map(x => { return new CardModel(x) });
+        this.orderTasks();
+      } else {
+        this.tasks = [];
       }
     });
   }
 
-  public taskDeleted(data: CardModel) {
+  private orderTasks() {
+    //   let normal = this.tasks.filter(x => x.priority === TaskPriorityEnum.Normal).sort((a,b)=>{
+    //       return a.deadLineDateTime.getTime() < b.deadLineDateTime.getTime() ? 1 : -1
+    //   });
+    //   let higth = this.tasks.filter(x => x.priority === TaskPriorityEnum.Higth).sort((a,b)=>{
+    //     return a.deadLineDateTime.getTime() < b.deadLineDateTime.getTime() ? 1 : -1
+    // });
+    this.tasks.sort((a, b) => {
+      return a.deadLineDateTime.getTime() - b.deadLineDateTime.getTime();
+    })
+
+  }
+
+  public taskDeleteHandler(data: CardModel) {
     this.dataService.deleteTask(data.id).subscribe(x => {
-      this.taskWithHigthPriority = this.taskWithHigthPriority.filter(x => x.id !== data.id);
-      this.taskWithNormalPriority = this.taskWithNormalPriority.filter(x => x.id !== data.id);
+      this.tasks = this.tasks.filter(x => x.id !== data.id);
     })
   }
 
-  public taskClosed(data: CardModel) {
-    this.dataService.closeTask(data).subscribe(x => {
-      this.taskWithHigthPriority = this.taskWithHigthPriority.filter(x => x.id !== data.id);
-      this.taskWithNormalPriority = this.taskWithNormalPriority.filter(x => x.id !== data.id);
+  public taskCloseHandler(data: CardModel) {
+    data.status = TaskStatusEnum.Close;
+    this.dataService.updateTask(data).subscribe(x => {
+      this.tasks = this.tasks.filter(x => x.id !== data.id);
+    })
+  }
+
+  public deadLineCahngeHandler(period: number, data: CardModel) {
+    var updatetdDate = new Date(data.deadLineDateTime.getTime() + period);
+    data.deadLineDateTime = updatetdDate;
+    this.dataService.updateTask(data).subscribe(x => {
+      const task = this.tasks.filter(x => x.id === data.id)[0];
+      if (task != null)
+        this.tasks.filter(x=>x.id === data.id)[0].deadLineDateTime = updatetdDate;
+        this.orderTasks();
     })
   }
 }

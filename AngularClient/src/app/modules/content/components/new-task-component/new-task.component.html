@@ -53,7 +53,7 @@
         </div>
         <div class="new-task-form-row">
             <span class="spacer"></span>
-            <button mat-raised-button mat-dialog-close type="reset" style="margin-right: 10px;">Отмена</button>
+            <button mat-raised-button type="reset" style="margin-right: 10px;" (click)="closeDialof()">Отмена</button>
             <button mat-raised-button color="primary" (click)="addTask()">Добавить</button>
         </div>
     </form>

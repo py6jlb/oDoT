@@ -117,5 +117,9 @@ export class NewTaskComponent implements OnInit {
       })
     }
 
+    closeDialof(){
+      this.dialogRef.close(null);
+    }
+
 
 }

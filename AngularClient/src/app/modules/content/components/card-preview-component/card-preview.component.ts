@@ -26,10 +26,8 @@ export class CardPreviewComponent implements OnInit {
     @Input() cardData: CardModel;
     @Output() taskDeleted: EventEmitter<void> = new EventEmitter();
     @Output() taskClosed: EventEmitter<void> = new EventEmitter();
+    @Output() deadLineChanged: EventEmitter<number> = new EventEmitter();
     
-    constructor(private dataService: ContentDataService) { }
-
-    ngOnInit() {
-        
-    }
+    constructor() { }
+    ngOnInit() {}
 }

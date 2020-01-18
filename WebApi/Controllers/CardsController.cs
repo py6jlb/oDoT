@@ -63,7 +63,18 @@ namespace WebApi.Controllers{
 
         [HttpPut]
         public IActionResult Put(CardModel model){
-            var data = _cardService.CloseCard(model.Id);
+            var dto = new CardDto{
+                CreateDateTime = model.CreateDateTime,
+                Status = model.Status,
+                Priority = model.Priority,
+                DeadLineDateTime = model.DeadLineDateTime,
+                DefferalCount = model.DefferalCount,
+                Name = model.Name,
+                PanicIntervalInMiliseconds = model.PanicIntervalInMiliseconds,
+                StartPanicDateTime = model.StartPanicDateTime
+            };
+        
+            var data = _cardService.UpdateCard(dto);
             return Ok(data);
         }
     }

@@ -4,6 +4,7 @@ using BusinessLogic.DTO;
 namespace BusinessLogic.Abstraction{
     public interface ICardService{
         CardDto AddCard(CardDto newCard);
+        CardDto UpdateCard(CardDto newCard);
         bool DeleteCard(string guid);
         bool CloseCard(string guid);
         CardDto GetCardById(string guid);

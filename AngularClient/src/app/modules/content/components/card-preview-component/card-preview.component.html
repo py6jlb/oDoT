@@ -1,6 +1,6 @@
 <mat-card class="task-card">
   <mat-card-header>
-    <div mat-card-avatar class="avatar"><fa-icon [icon]="faCrown" [fixedWidth]="true" size="lg" *ngIf="cardData.priority===1" style="margin: 0 auto;"></fa-icon></div>
+    <div mat-card-avatar class="avatar" *ngIf="cardData.priority===1"><fa-icon [icon]="faCrown" [fixedWidth]="true" size="lg" style="margin: 0 auto;"></fa-icon></div>
     <mat-card-title class="card-title-text">{{cardData.name}}</mat-card-title >
     <mat-card-subtitle>до: {{cardData.deadLineDateTime | date:'dd.MM.yyyy HH:mm'}}</mat-card-subtitle>
   </mat-card-header>      
@@ -16,9 +16,9 @@
       <fa-icon [icon]="faBed" [fixedWidth]="true"> </fa-icon>
     </button>
     <mat-menu #sleepMenu="matMenu">
-      <button mat-menu-item matTooltip="+1 день" >Сдлаю завтра</button>
-      <button mat-menu-item matTooltip="+2 дня">Пару дней терпит</button>
-      <button mat-menu-item matTooltip="+1 неделя">Не горит</button>
+      <button mat-menu-item matTooltip="+1 день" (click)="deadLineChanged.emit(86400000)">Сдлаю завтра</button>
+      <button mat-menu-item matTooltip="+2 дня" (click)="deadLineChanged.emit(172800000)">Пару дней терпит</button>
+      <button mat-menu-item matTooltip="+1 неделя" (click)="deadLineChanged.emit(604800000)">Не горит</button>
     </mat-menu>
     
     <button mat-mini-fab color="primary" [matMenuTriggerFor]="cardMenu">

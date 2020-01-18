@@ -59,7 +59,13 @@ export class ContentDataService {
         return result;
     }
 
-    public closeTask(data: CardModel){
+    public updateTask(data: CardModel){
+        const model = this.getICardModel(data);
+        var result = this.http.put<boolean>(`${this.configService.config.baseUrl}/api/cards`, model)
+        return result;
+    }
+
+    private getICardModel(data:CardModel):ICardModel{
         const content = data.content != null ? {id: data.content.id, text: data.content.text} as ICardContentModel : null
         const comments = data.cardComments != null && data.cardComments.length === 0 ?
             data.cardComments.map(x=>{
@@ -78,14 +84,13 @@ export class ContentDataService {
             deadLineDateTime: data.deadLineDateTime.getTime(),
             startPanicDateTime: data.startPanicDateTime.getTime(),
             panicIntervalInMiliseconds: data.panicIntervalInMiliseconds,
-            defferalCount: 0,
-            status: TaskStatusEnum.Close,
+            defferalCount: data.defferalCount,
+            status: data.status,
             priority: data.priority,
             content: content,
             cardComments: comments
           } as ICardModel
 
-        var result = this.http.put<boolean>(`${this.configService.config.baseUrl}/api/cards`, model)
-        return result;
+          return model;
     }
 }
