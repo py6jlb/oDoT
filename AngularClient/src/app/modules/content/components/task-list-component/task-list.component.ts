@@ -56,12 +56,6 @@ export class TaskListComponent implements OnInit {
   }
 
   private orderTasks() {
-    //   let normal = this.tasks.filter(x => x.priority === TaskPriorityEnum.Normal).sort((a,b)=>{
-    //       return a.deadLineDateTime.getTime() < b.deadLineDateTime.getTime() ? 1 : -1
-    //   });
-    //   let higth = this.tasks.filter(x => x.priority === TaskPriorityEnum.Higth).sort((a,b)=>{
-    //     return a.deadLineDateTime.getTime() < b.deadLineDateTime.getTime() ? 1 : -1
-    // });
     this.tasks.sort((a, b) => {
       return a.deadLineDateTime.getTime() - b.deadLineDateTime.getTime();
     })
@@ -74,21 +68,21 @@ export class TaskListComponent implements OnInit {
     })
   }
 
-  public taskCloseHandler(data: CardModel) {
-    data.status = TaskStatusEnum.Close;
-    this.dataService.updateTask(data).subscribe(x => {
+  public taskCloseHandler(data: CardModel) {    
+    var model = this.dataService.getICardModel(data);
+    model.status = TaskStatusEnum.Close
+    this.dataService.updateTask(model).subscribe(x => {
+      data.status = TaskStatusEnum.Close;
       this.tasks = this.tasks.filter(x => x.id !== data.id);
     })
   }
 
   public deadLineCahngeHandler(period: number, data: CardModel) {
-    var updatetdDate = new Date(data.deadLineDateTime.getTime() + period);
-    data.deadLineDateTime = updatetdDate;
-    this.dataService.updateTask(data).subscribe(x => {
-      const task = this.tasks.filter(x => x.id === data.id)[0];
-      if (task != null)
-        this.tasks.filter(x=>x.id === data.id)[0].deadLineDateTime = updatetdDate;
-        this.orderTasks();
+    var updatetdDate =data.deadLineDateTime.getTime() + period;
+    var model = this.dataService.getICardModel(data);
+    model.deadLineDateTime = updatetdDate
+    this.dataService.updateTask(model).subscribe(x => {
+        data.deadLineDateTime = new Date(updatetdDate);
     })
   }
 }

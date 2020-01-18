@@ -151,7 +151,7 @@ namespace BusinessLogic{
             var parsedGuid = Guid.Parse(card.Id);
             var cardFromDb = _cardRepo.GetCardById(parsedGuid);
             
-            cardFromDb.DeadLineDateTime = card.DeadLineDateTime.HasValue ? DateTimeHelper.MilisecondToDateTime(card.DeadLineDateTime.Value) : null,
+            cardFromDb.DeadLineDateTime = DateTimeHelper.MilisecondToDateTime(card.DeadLineDateTime);
             cardFromDb.DefferalCount = card.DefferalCount;
             cardFromDb.Priority = card.Priority;
             cardFromDb.Status = card.Status;

@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { ConfigService } from 'src/app/shared/services/config.service';
 import { ISettingsModel, IKeyValuePair, ICardModel, ICardContentModel, ICardCommentModel } from '../@types/tasks';
 import { SettingsModel } from '../models/settings-model';
 import { forkJoin } from 'rxjs';
 import { CardModel } from '../models/card.model';
-import { TaskStatusEnum } from 'src/app/shared/enums/taskStatusEnum';
 
 @Injectable()
 export class ContentDataService {    
@@ -59,13 +58,12 @@ export class ContentDataService {
         return result;
     }
 
-    public updateTask(data: CardModel){
-        const model = this.getICardModel(data);
-        var result = this.http.put<boolean>(`${this.configService.config.baseUrl}/api/cards`, model)
+    public updateTask(data: ICardModel){
+        var result = this.http.put<boolean>(`${this.configService.config.baseUrl}/api/cards`, data)
         return result;
     }
 
-    private getICardModel(data:CardModel):ICardModel{
+    public getICardModel(data:CardModel):ICardModel{
         const content = data.content != null ? {id: data.content.id, text: data.content.text} as ICardContentModel : null
         const comments = data.cardComments != null && data.cardComments.length === 0 ?
             data.cardComments.map(x=>{

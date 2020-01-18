@@ -1,0 +1,14 @@
+<div class="card-board">
+  <div class="card-board-row">
+    <app-card-preview class="task-card" *ngFor="let item of tasks" [cardData]="item"></app-card-preview>
+  </div>
+</div>
+
+<!-- <div class="card-board">
+  <mat-grid-list cols="4" gutterSize="10px" rowHeight="100%">
+    <mat-grid-tile *ngFor="let item of tasks">
+        <app-card-preview class="task-card" [cardData]="item"></app-card-preview>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div> -->
+

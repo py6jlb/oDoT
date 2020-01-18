@@ -1,14 +1,10 @@
 <div class="card-board">
-    <div class="card-board-row">
-    <app-card-preview class="task-card"
-    *ngFor="let item of tasks" 
-    (taskDeleted)="taskDeleteHandler(item)"
-    (taskClosed)="taskCloseHandler(item)" 
-    (deadLineChanged)="deadLineCahngeHandler($event, item)"
-    [cardData]="item"
-    [class.expired-task]="item.deadLineDateTime.getTime() < dateNow"></app-card-preview>
-</div>
-  <button class="plus-button" mat-fab color="primary"  (click)="openNewTaskDialog()">
+  <div class="card-board-row">
+    <app-card-preview class="task-card" *ngFor="let item of tasks" (taskDeleted)="taskDeleteHandler(item)"
+      (taskClosed)="taskCloseHandler(item)" (deadLineChanged)="deadLineCahngeHandler($event, item)" [cardData]="item"
+      [class.expired-task]="item.deadLineDateTime.getTime() < dateNow"></app-card-preview>
+  </div>
+  <button class="plus-button" mat-fab color="primary" (click)="openNewTaskDialog()">
     <fa-icon [icon]="faPlus" [fixedWidth]="true" size="lg"></fa-icon>
   </button>
 </div>

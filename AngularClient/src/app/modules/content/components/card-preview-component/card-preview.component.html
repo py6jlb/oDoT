@@ -9,7 +9,8 @@
      {{cardData.content.text}}
     </p>
   </mat-card-content>
-  <mat-card-actions class="card-actions">
+  
+  <mat-card-actions class="card-actions" *ngIf="cardData.status === 1">
     <span class="spacer"></span>
 
     <button mat-mini-fab color="primary" style="margin-right: 5px;" matTooltip="Отложить" [matMenuTriggerFor]="sleepMenu">
@@ -34,5 +35,13 @@
       <button mat-menu-item (click)="taskClosed.emit()"><fa-icon [icon]="faCheck" [fixedWidth]="true"></fa-icon>&nbsp;Закрыть</button>
       <button mat-menu-item (click)="taskDeleted.emit()"><fa-icon [icon]="faTrash" [fixedWidth]="true"></fa-icon>&nbsp;Удалить</button>
     </mat-menu>
+  </mat-card-actions>
+
+  <mat-card-actions class="card-actions" *ngIf="cardData.status === 2">
+    <span class="spacer"></span>
+  </mat-card-actions>
+
+  <mat-card-actions class="card-actions" *ngIf="cardData.status === 3">
+    <span class="spacer"></span>
   </mat-card-actions>
 </mat-card>

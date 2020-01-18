@@ -10,17 +10,23 @@ import { NewTaskComponent } from './components/new-task-component/new-task.compo
 import { CommonModule } from '@angular/common';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from 'ngx-mat-datetime-picker';
 import { CardPreviewComponent } from './components/card-preview-component/card-preview.component';
+import { ExecutedTaskListComponent } from './components/executed-task-list-components/executed-task-list.component';
+import { DeletedTaskListComponent } from './components/deleted-task-list-component/deleted-task-list.component';
 
 @NgModule({
   declarations: [
     TaskListComponent, 
     SettingsComponent, 
     NewTaskComponent,
-    CardPreviewComponent
+    CardPreviewComponent,
+    ExecutedTaskListComponent,
+    DeletedTaskListComponent
   ],
   exports: [
     TaskListComponent, 
-    SettingsComponent
+    SettingsComponent,
+    ExecutedTaskListComponent,
+    DeletedTaskListComponent
   ],
   imports: [
     CommonModule,

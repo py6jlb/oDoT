@@ -64,6 +64,7 @@ namespace WebApi.Controllers{
         [HttpPut]
         public IActionResult Put(CardModel model){
             var dto = new CardDto{
+                Id = model.Id,
                 CreateDateTime = model.CreateDateTime,
                 Status = model.Status,
                 Priority = model.Priority,
