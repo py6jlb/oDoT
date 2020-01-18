@@ -16,16 +16,13 @@ mat-expansion-panel{
 }
 
 .task-card {
-    max-width: 250px;
+    max-width: 270px;
+    width: 100%;
     margin: 10px;
-  }
+}
 
 .plus-button{
     position: fixed;
     bottom: 20px;
     right: 35px;
 }
-
-// .plus-button:hover{
-//     background-color: #494949;
-// }

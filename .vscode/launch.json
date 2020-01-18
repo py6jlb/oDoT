@@ -24,7 +24,7 @@
                 "args": "${auto-detect-url}",
                 "windows": {
                     "command": "cmd.exe",
-                    "args": "/C start \"\" \"C:/Program Files/Firefox Developer Edition/firefox.exe\" ${auto-detect-url}"
+                    "args": "/C start \"\" \"C:/Program Files/Firefox Developer Edition/firefox.exe\" ${auto-detect-url}/api/cards/1"
                 }
             },
             "env": {

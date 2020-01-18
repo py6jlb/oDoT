@@ -1,7 +1,15 @@
 <div class="card-board">
     <div class="card-board-row">
-    <app-card-preview *ngFor="let item of taskWithHigthPriority" (taskDeleted)="taskDeleted($event)" [cardData]="item"></app-card-preview>
-    <app-card-preview *ngFor="let item of taskWithNormalPriority" (taskDeleted)="taskDeleted($event)" [cardData]="item"></app-card-preview>
+    <app-card-preview class="task-card"
+    *ngFor="let item of taskWithHigthPriority" 
+    (taskDeleted)="taskDeleted(item)"
+    (taskClosed)="taskClosed(item)" 
+    [cardData]="item"></app-card-preview>
+    <app-card-preview class="task-card"
+    *ngFor="let item of taskWithNormalPriority" 
+    (taskDeleted)="taskDeleted(item)"
+    (taskClosed)="taskClosed(item)"
+     [cardData]="item"></app-card-preview>
 </div>
   <button class="plus-button" mat-fab color="primary"  (click)="openNewTaskDialog()">
     <fa-icon [icon]="faPlus" [fixedWidth]="true" size="lg"></fa-icon>

@@ -10,6 +10,8 @@ using System.Linq;
 using System.Collections.Generic;
 
 namespace WebApi.Controllers{
+    [ApiController]
+    [Route("api/[controller]")]
     public class SettingsController : ControllerBase
     {
         private readonly ILogger<SettingsController> _logger;
@@ -28,7 +30,7 @@ namespace WebApi.Controllers{
         }
 
         [HttpPost]  
-        public IActionResult Post([FromBody]SettingsModel model){
+        public IActionResult Post(SettingsModel model){
             if(model == null){
                 return BadRequest();
             }
@@ -41,7 +43,7 @@ namespace WebApi.Controllers{
             return Ok(result);
         }
         
-        [HttpGet]
+        [HttpGet("statuses")]
         public IActionResult Statuses(){
             var data = (CardStatusEnum[])Enum.GetValues(typeof(CardStatusEnum));
             var result = new List<CardStatusEnum>(data).Select(x=> new{
@@ -51,7 +53,7 @@ namespace WebApi.Controllers{
             return Ok(result);
         }
 
-        [HttpGet]
+        [HttpGet("priority")]
         public IActionResult Priority(){
             var data = (CardPriorityEnum[])Enum.GetValues(typeof(CardPriorityEnum));
             var result = new List<CardPriorityEnum>(data).Select(x=> new{

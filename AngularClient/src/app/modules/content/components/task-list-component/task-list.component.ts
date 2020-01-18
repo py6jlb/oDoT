@@ -21,9 +21,8 @@ export class TaskListComponent implements OnInit {
 
   constructor(
     private dataService: ContentDataService,
-    private config: ConfigService,
     private dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.loadData();
@@ -35,19 +34,17 @@ export class TaskListComponent implements OnInit {
     dialogConfig.width = "1000px";
     dialogConfig.disableClose = true;
     const dialogRef = this.dialog.open(NewTaskComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe(x=>{
-        if(x.priority === TaskPriorityEnum.Normal)
-            this.taskWithNormalPriority.push(new CardModel(x));
+    dialogRef.afterClosed().subscribe(x => {
+      if (x.priority === TaskPriorityEnum.Normal)
+        this.taskWithNormalPriority.push(new CardModel(x));
 
-        if(x.priority === TaskPriorityEnum.Higth)
-            this.taskWithHigthPriority.push(new CardModel(x));
-        //console.log(x)
+      if (x.priority === TaskPriorityEnum.Higth)
+        this.taskWithHigthPriority.push(new CardModel(x));
     })
   }
 
   private loadData() {
     this.dataService.getTasksByStatus(TaskStatusEnum.Open).subscribe(x => {
-      //console.log(x)
       if (x != null && x.length > 0) {
         let normal = x.filter(x => x.priority === TaskPriorityEnum.Normal);
         let higth = x.filter(x => x.priority === TaskPriorityEnum.Higth);
@@ -61,14 +58,21 @@ export class TaskListComponent implements OnInit {
           this.taskWithHigthPriority = higth.map(x => {
             return new CardModel(x);
           });
-
-        //console.log(this.taskWithHigthPriority, this.taskWithNormalPriority)
       }
     });
   }
 
-  public taskDeleted(id: string){
-      this.taskWithHigthPriority = this.taskWithHigthPriority.filter(x=>x.id!==id);
-      this.taskWithNormalPriority = this.taskWithNormalPriority.filter(x=>x.id!==id);
+  public taskDeleted(data: CardModel) {
+    this.dataService.deleteTask(data.id).subscribe(x => {
+      this.taskWithHigthPriority = this.taskWithHigthPriority.filter(x => x.id !== data.id);
+      this.taskWithNormalPriority = this.taskWithNormalPriority.filter(x => x.id !== data.id);
+    })
+  }
+
+  public taskClosed(data: CardModel) {
+    this.dataService.closeTask(data).subscribe(x => {
+      this.taskWithHigthPriority = this.taskWithHigthPriority.filter(x => x.id !== data.id);
+      this.taskWithNormalPriority = this.taskWithNormalPriority.filter(x => x.id !== data.id);
+    })
   }
 }

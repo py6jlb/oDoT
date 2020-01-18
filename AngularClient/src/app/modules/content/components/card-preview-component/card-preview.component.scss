@@ -1,8 +1,3 @@
-.task-card {
-    max-width: 250px;
-    margin: 10px;
-}
-
 .card-actions{
     display: flex;
 }
@@ -10,4 +5,12 @@
 .avatar{
     display: flex;
     align-items: center;
+}
+
+.card-content{
+    word-break: break-word;
+}
+
+.card-title-text{
+    word-break: break-all;
 }

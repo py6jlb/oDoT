@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace WebApi.Controllers{
+
+    [ApiController]
+    [Route("api/[controller]")]
     public class CardCommentsController : ControllerBase
     {
         private readonly ILogger<CardCommentsController> _logger;

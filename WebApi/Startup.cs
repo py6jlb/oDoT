@@ -47,13 +47,12 @@ namespace WebApi
             app.UseCors("default");
             app.UseHttpsRedirection();
             app.UseRouting();
-            //app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapControllerRoute("default", "{controller=Settings}/{action=Get}/{id?}");
                 endpoints.MapHealthChecks("/health");
-                endpoints.MapHub<ToDoHub>("todos");
+                endpoints.MapHub<ToDoHub>("/todos");
             });
         }
     }

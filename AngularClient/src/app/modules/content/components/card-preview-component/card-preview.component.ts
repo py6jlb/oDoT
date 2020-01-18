@@ -24,23 +24,12 @@ export class CardPreviewComponent implements OnInit {
     faCrown = faCrown;
 
     @Input() cardData: CardModel;
-    @Output() taskDeleted: EventEmitter<string> = new EventEmitter();
+    @Output() taskDeleted: EventEmitter<void> = new EventEmitter();
+    @Output() taskClosed: EventEmitter<void> = new EventEmitter();
     
     constructor(private dataService: ContentDataService) { }
 
     ngOnInit() {
         
-    }
-
-    public deleteTask(id: string){
-        this.dataService.deleteTask(id).subscribe(x=>{
-            this.taskDeleted.emit(id);
-        });
-    }
-
-    public closeTask(id: string){
-        this.dataService.closeTask(id).subscribe(x=>{
-            this.taskDeleted.emit(id);
-        });
     }
 }

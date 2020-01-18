@@ -10,6 +10,8 @@ using Shared.Helpers;
 using WebApi.Models;
 
 namespace WebApi.Controllers{
+    [ApiController]
+    [Route("api/[controller]")]
     public class CardsController : ControllerBase
     {
         private readonly ILogger<CardsController> _logger;
@@ -27,14 +29,14 @@ namespace WebApi.Controllers{
             return Ok(data != null && data.Any() ? data.ToArray() : new object[0]);
         }
 
-        [HttpGet]
-        public IActionResult GetByStatus([FromQuery]int status){
+        [HttpGet("{status:int}")]
+        public IActionResult Get(int status){
             var data = _cardService.GetCardsByStatus(status);
             return Ok(data != null && data.Any() ? data.ToArray() : new object[0]);
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]CardModel model){
+        public IActionResult Post(CardModel model){
             var data = new CardDto{
                 CreateDateTime = model.CreateDateTime,
                 Status = model.Status,
@@ -53,16 +55,15 @@ namespace WebApi.Controllers{
             return Ok(result);
         }
 
-
-        [HttpGet]
-        public IActionResult DeleteCard([FromQuery]string id){
+        [HttpDelete("{id}")]
+        public IActionResult Delete(string id){
             var data = _cardService.DeleteCard(id);
             return Ok(data);
         }
 
-        [HttpGet]
-        public IActionResult CloseCard([FromQuery]string id){
-            var data = _cardService.CloseCard(id);
+        [HttpPut]
+        public IActionResult Put(CardModel model){
+            var data = _cardService.CloseCard(model.Id);
             return Ok(data);
         }
     }
