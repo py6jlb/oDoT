@@ -27,7 +27,7 @@ namespace WebApi.StartupExtensions
                     PanicTimeSpanInMiliseconds = dataFromConfig.DefaultPanicTimeSpanInSeconds*1000,
                     StartPanicForTimeSpanInMiliseconds = dataFromConfig.DefaultStartPanicForTimeSpanInSeconds*1000
                 };
-                var s = settingsRepo.SaveSettings(newSettings);
+                var s = settingsRepo.AddSettings(newSettings);
             }
             return services;
         }
