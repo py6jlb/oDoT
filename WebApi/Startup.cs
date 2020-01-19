@@ -27,7 +27,8 @@ namespace WebApi
             {
                 c.AddPolicy("default", policy =>
                         {
-                            policy.WithOrigins("http://localhost:4200")
+                            var urls = Configuration.GetSection("CorsUrls").Get<string[]>();
+                            policy.WithOrigins(urls)
                                 .AllowAnyHeader()
                                 .AllowAnyMethod();
                         });

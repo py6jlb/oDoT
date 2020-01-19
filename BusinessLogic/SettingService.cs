@@ -1,3 +1,4 @@
+using System;
 using BusinessLogic.Abstraction;
 using BusinessLogic.DTO;
 using DataAccess.Entities;
@@ -20,7 +21,8 @@ namespace BusinessLogic{
 
         public SettingsDto SaveSettings(SettingsDto newData)
         {
-            var res = _settingsRepo.AddSettings(new Settings{
+            var res = _settingsRepo.UpdateSettings(new Settings{
+                Id = Guid.Parse(newData.Id),
                 DeadlineTimeSpanInMiliseconds = newData.DeadlineTimeSpanInMiliseconds,
                 PanicTimeSpanInMiliseconds = newData.PanicTimeSpanInMiliseconds,
                 StartPanicForTimeSpanInMiliseconds = newData.StartPanicForTimeSpanInMiliseconds

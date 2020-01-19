@@ -22,5 +22,16 @@ namespace DataAccess.Repositories{
             var data = _context.Settings.FindById(id);
             return data;
         }
+
+        public Settings UpdateSettings(Settings newData)
+        {
+            var data = _context.Settings.FindById(newData.Id);
+            data.DeadlineTimeSpanInMiliseconds = newData.DeadlineTimeSpanInMiliseconds;
+            data.PanicTimeSpanInMiliseconds = newData.PanicTimeSpanInMiliseconds;
+            data.StartPanicForTimeSpanInMiliseconds = newData.StartPanicForTimeSpanInMiliseconds;
+
+            var res = _context.Settings.Update(data);
+            return res ? data : null;
+        }
     }
 }

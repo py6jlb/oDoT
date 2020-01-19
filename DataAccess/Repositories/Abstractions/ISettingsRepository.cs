@@ -7,5 +7,6 @@ namespace DataAccess.Repositories.Abstractions{
     {
         Settings GetSettings();
         Settings AddSettings(Settings newData);
+        Settings UpdateSettings(Settings newData);
     }
 }
