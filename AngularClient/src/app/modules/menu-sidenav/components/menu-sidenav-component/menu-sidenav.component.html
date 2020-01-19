@@ -1,0 +1,23 @@
+<mat-list>
+    <a matRipple  mat-list-item [routerLink]="'/tasks'" routerLinkActive="active-list-item">
+        <fa-icon [icon]="faTasks" [fixedWidth]="true" size="lg"></fa-icon>&nbsp;
+        <span>Задачи</span>
+    </a>
+    <a matRipple  mat-list-item [routerLink]="'/settings'" routerLinkActive="active-list-item">
+        <fa-icon [icon]="faCog" [fixedWidth]="true" size="lg"></fa-icon>&nbsp;
+        <span>Настройки</span>
+    </a>
+    <!-- <a matRipple  mat-list-item [routerLink]="'/2'" routerLinkActive="active-list-item">
+        <fa-icon [icon]="faChartLine" [fixedWidth]="true" size="lg"></fa-icon>&nbsp;
+        <span>Cтатистика прокрастинации</span> 
+    </a> -->
+    <mat-divider></mat-divider>
+    <a  matRipple mat-list-item [routerLink]="'/executed'" routerLinkActive="active-list-item">
+        <fa-icon [icon]="faCheck" [fixedWidth]="true" size="lg"></fa-icon>&nbsp;
+        <span>Выполненые</span>
+    </a>
+    <a matRipple  mat-list-item [routerLink]="'/deleted'" routerLinkActive="active-list-item"  >
+        <fa-icon [icon]="faTrash" [fixedWidth]="true" size="lg"></fa-icon>&nbsp;
+        <span>Корзина</span>
+    </a>
+</mat-list>

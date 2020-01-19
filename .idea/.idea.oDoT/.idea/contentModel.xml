@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\projects\oDoT" t="IncludeFlat">
+      <e p="BusinessLogic" t="IncludeRecursive">
+        <e p="Abstractions" t="Include">
+          <e p="ICardService.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="BusinessLogic.csproj" t="IncludeRecursive" />
+        <e p="CardService.cs" t="Include" />
+        <e p="DTO" t="Include">
+          <e p="CardCommentDto.cs" t="Include" />
+          <e p="CardContentDto.cs" t="Include" />
+          <e p="CardDto.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="BusinessLogic.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="DataAccess" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="DataAccess.csproj" t="IncludeRecursive" />
+        <e p="Entities" t="Include">
+          <e p="Card.cs" t="Include" />
+          <e p="CardComment.cs" t="Include" />
+          <e p="CardContent.cs" t="Include" />
+          <e p="GlobalUserParameters.cs" t="Include" />
+        </e>
+        <e p="LiteDbContext.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="DataAccess.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Repositories" t="Include">
+          <e p="Abstractions" t="Include">
+            <e p="ICardCommentRepository.cs" t="Include" />
+            <e p="ICardContentRepository.cs" t="Include" />
+            <e p="ICardRepository.cs" t="Include" />
+          </e>
+          <e p="CardCommentRepository.cs" t="Include" />
+          <e p="CardContentRepository.cs" t="Include" />
+          <e p="CardRepository.cs" t="Include" />
+        </e>
+      </e>
+      <e p="oDoT.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Shared" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Enums" t="Include">
+          <e p="CardPriorityEnum.cs" t="Include" />
+          <e p="CardStatusEnum.cs" t="Include" />
+        </e>
+        <e p="Helpers" t="Include">
+          <e p="DateTimeHelper.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Shared.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Shared.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="WebApi" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Configurations" t="Include">
+          <e p="appsettings.Development.json" t="Include" />
+          <e p="appsettings.json" t="Include" />
+        </e>
+        <e p="Controllers" t="Include">
+          <e p="CardsController.cs" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="CardCommentModel.cs" t="Include" />
+          <e p="CardContentModel.cs" t="Include" />
+          <e p="CardModel.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="WebApi.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="otdo.db" t="Include" />
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+        <e p="StartupExtensions" t="Include">
+          <e p="RepositoriesExtensions.cs" t="Include" />
+          <e p="ServicesExtensions.cs" t="Include" />
+        </e>
+        <e p="WebApi.csproj" t="IncludeRecursive" />
+      </e>
+    </e>
+    <e p="C:\Users\a.vrublevsky.Z-IT\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\a.vrublevsky.Z-IT\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_oDoT.-22905965.00" t="ExcludeRecursive" />
+  </component>
+</project>

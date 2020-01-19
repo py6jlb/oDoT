@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <button
+    class="toggle-menu-button"
+    mat-icon-button
+    (click)="toggleMenuClickhandler()"
+  >
+    <fa-icon [icon]="faBars" [fixedWidth]="true" size="lg"></fa-icon>
+  </button>
+  <a class="toolbar-logo clickable-element non-link" href="#">
+    <img src="/assets/icons/main-logo.png" height="48px" />
+    <h1>oDoT</h1>
+  </a>
+  <span class="spacer"></span>
+</mat-toolbar>

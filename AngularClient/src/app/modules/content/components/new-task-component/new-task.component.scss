@@ -1,0 +1,52 @@
+.new-task-container{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.new-task-form{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.full-width-input{
+    width: 100%;
+}
+
+.new-task-form-row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.date-list{
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    list-style: none;
+}
+
+.two-element-in-row mat-form-field{
+    flex-grow: 1;
+    padding-right:10px;
+}
+
+.two-element-in-row mat-form-field:last-of-type{
+    flex-grow: 1;
+    padding-right:0px;
+}
+
+
+.three-element-in-row mat-form-field{
+    flex-grow: 1;
+    padding-right:10px;
+}
+
+.three-element-in-row mat-form-field:last-of-type{
+    flex-grow: 1;
+    padding-right:0px;
+}
+
+
+

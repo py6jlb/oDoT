@@ -1,0 +1,29 @@
+.settings-form{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-form-row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.settings-form-row mat-form-field, .settings-form-row h3{
+    margin: 10px;
+}
+
+.settings-form-row button{
+    margin: 10px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}

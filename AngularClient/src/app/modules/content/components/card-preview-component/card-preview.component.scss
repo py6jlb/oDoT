@@ -1,0 +1,19 @@
+.card-actions{
+    display: flex;
+}
+
+.avatar{
+    display: flex;
+    align-items: center;
+}
+
+.card-content{
+    //overflow-wrap: break-word;
+    word-break: break-word;
+    min-width: 250px;
+}
+
+.card-title-text{
+    //overflow-wrap: break-word;
+    word-break: break-all;
+}

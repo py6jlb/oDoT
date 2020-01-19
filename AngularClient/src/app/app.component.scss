@@ -1,0 +1,14 @@
+.app-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.sidenav-container {
+  height: calc(100vh - 64px);
+}
+
+mat-sidenav{
+  // padding: 5px 10px;
+  max-width: 350px;
+}
