@@ -9,6 +9,8 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using WebApi.Attbutes;
+using Swashbuckle.AspNetCore.Annotations;
+using WebApi.Contracts.V1;
 
 namespace WebApi.Controllers
 {
@@ -25,16 +27,15 @@ namespace WebApi.Controllers
             _settingsService = settingsService;
         }
 
-        [HttpGet]
+        [HttpGet(ApiRoutes.Settings.Get)]
         public IActionResult GetSettings()
         {
             var result = _settingsService.GetSettings();
             return new JsonResult(result);
         }
 
-        [HttpGet]
-        [ExactQueryParam("refname")]
-        public IActionResult GetStatuses([FromQuery] string refname)
+        [HttpGet(ApiRoutes.Settings.GetRefs)]
+        public IActionResult GetRefs([FromQuery] string refname)
         {
             switch (refname)
             {
@@ -59,7 +60,7 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost(ApiRoutes.Settings.Update)]
         public IActionResult Post(SettingsModel model)
         {
             if (model == null)

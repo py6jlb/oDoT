@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WebApi.Attbutes;
 using WebApi.Models;
+using Swashbuckle.AspNetCore.Annotations;
+using WebApi.Contracts.V1;
+using WebApi.Contracts.V1.Requests.Queries;
 
 namespace WebApi.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
     public class CardsController : ControllerBase
     {
         private readonly ILogger<CardsController> _logger;
@@ -21,29 +23,21 @@ namespace WebApi.Controllers
             _cardService = cardService;
         }
 
-        [HttpGet]
-        public IActionResult GetAll()
+        [HttpGet(ApiRoutes.Cards.GetAll)]
+        public IActionResult GetAll([FromQuery]GetAllCardsQuery query)
         {
-            var data = _cardService.GetCards();
+            var data = query.Status.HasValue ? _cardService.GetCardsByStatus(query.Status.Value) :_cardService.GetCards();
             return Ok(data != null && data.Any() ? data.ToArray() : new object[0]);
         }
 
-        [HttpGet]
-        [ExactQueryParam("status")]
-        public IActionResult GetByStatus([FromQuery]int status)
-        {
-            var data = _cardService.GetCardsByStatus(status);
-            return Ok(data != null && data.Any() ? data.ToArray() : new object[0]);
-        }
-
-        [HttpGet("{id}")]
+        [HttpGet(ApiRoutes.Cards.Get)]
         public IActionResult GetById(string id)
         {
             var data = _cardService.GetCardById(id);
             return Ok(data);
         }
 
-        [HttpPost]
+        [HttpPost(ApiRoutes.Cards.Create)]
         public IActionResult Post(CardModel model)
         {
             var data = new CardDto
@@ -66,14 +60,14 @@ namespace WebApi.Controllers
             return Ok(result);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete(ApiRoutes.Cards.Delete)]
         public IActionResult Delete(string id)
         {
             var data = _cardService.DeleteCard(id);
             return Ok(data);
         }
 
-        [HttpPut]
+        [HttpPut(ApiRoutes.Cards.Update)]
         public IActionResult Put(CardModel model)
         {
             var dto = new CardDto
