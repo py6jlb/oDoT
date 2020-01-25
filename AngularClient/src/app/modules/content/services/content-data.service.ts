@@ -19,12 +19,12 @@ export class ContentDataService {
     }  
 
     public getStatuses(){
-        var result = this.http.get<IKeyValuePair<number, string>[]>(`${this.configService.config.baseUrl}/api/Settings/Statuses`)
+        var result = this.http.get<IKeyValuePair<number, string>[]>(`${this.configService.config.baseUrl}/api/Settings?refname=statuses`)
         return result;
     }
 
     public getPriority(){
-        var result = this.http.get<IKeyValuePair<number, string>[]>(`${this.configService.config.baseUrl}/api/Settings/Priority`)
+        var result = this.http.get<IKeyValuePair<number, string>[]>(`${this.configService.config.baseUrl}/api/Settings?refname=priority`)
         return result;
     }
 
@@ -49,7 +49,7 @@ export class ContentDataService {
     }
 
     public getTasksByStatus(status: number){
-        var result = this.http.get<ICardModel[]>(`${this.configService.config.baseUrl}/api/cards/${status}`)       
+        var result = this.http.get<ICardModel[]>(`${this.configService.config.baseUrl}/api/cards?status=${status}`)       
         return result;
     }
 

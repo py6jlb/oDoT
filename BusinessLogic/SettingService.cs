@@ -19,6 +19,16 @@ namespace BusinessLogic{
             _settingsRepo = settingsRepo;
         }
 
+        public SettingsDto AddSettings(SettingsDto newData)
+        {
+            var res = _settingsRepo.AddSettings(new Settings{
+                DeadlineTimeSpanInMiliseconds = newData.DeadlineTimeSpanInMiliseconds,
+                PanicTimeSpanInMiliseconds = newData.PanicTimeSpanInMiliseconds,
+                StartPanicForTimeSpanInMiliseconds = newData.StartPanicForTimeSpanInMiliseconds
+            });
+            return new SettingsDto(res);
+        }
+
         public SettingsDto SaveSettings(SettingsDto newData)
         {
             var res = _settingsRepo.UpdateSettings(new Settings{
