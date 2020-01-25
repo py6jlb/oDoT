@@ -109,7 +109,7 @@ namespace BusinessLogic{
             var parsedGuid = Guid.Parse(guid);
             var data = _cardRepo.GetCardById(parsedGuid);
 
-            var result = new CardDto(data);
+            var result = data!=null? new CardDto(data) : null;
                 
             return result;
         }

@@ -86,7 +86,7 @@
 - Git
 
 ### Для запуска отладки
-- Клонировать репозиторий: https://github.com/py6jlb/oDoT/tree/master
+- Клонировать репозиторий: https://github.com/py6jlb/oDoT.git
 - Открыть папку с проектом в VSCode;
 - Выполнить команду:
     > dotnet restore  
