@@ -4,11 +4,9 @@ using BusinessLogic.Abstraction;
 using BusinessLogic.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using WebApi.Attbutes;
-using WebApi.Models;
-using Swashbuckle.AspNetCore.Annotations;
 using WebApi.Contracts.V1;
 using WebApi.Contracts.V1.Requests.Queries;
+using WebApi.Models;
 
 namespace WebApi.Controllers
 {

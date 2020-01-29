@@ -25,7 +25,11 @@ namespace WebApi.Contracts.V1
         {
             public const string Get = Base + "/settings";
             public const string Update = Base + "/settings";
-            public const string GetRefs = Base + "/settings/getRefs";
+        }
+
+        public static class Ref
+        {
+            public const string Get = Base + "/ref/{id:alpha}";
         }
     }
 }
