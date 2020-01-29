@@ -19,12 +19,12 @@ export class ContentDataService {
     }  
 
     public getStatuses(){
-        var result = this.http.get<IKeyValuePair<number, string>[]>(`${this.configService.config.baseUrl}/api/Settings?refname=statuses`)
+        var result = this.http.get<IKeyValuePair<number, string>[]>(`${this.configService.config.baseUrl}/ref/status`)
         return result;
     }
 
     public getPriority(){
-        var result = this.http.get<IKeyValuePair<number, string>[]>(`${this.configService.config.baseUrl}/api/Settings?refname=priority`)
+        var result = this.http.get<IKeyValuePair<number, string>[]>(`${this.configService.config.baseUrl}/ref/priority`)
         return result;
     }
 
@@ -34,32 +34,32 @@ export class ContentDataService {
     }
 
     public getSettings(){
-        var result = this.http.get<ISettingsModel>(`${this.configService.config.baseUrl}/api/Settings`)
+        var result = this.http.get<ISettingsModel>(`${this.configService.config.baseUrl}/settings`)
         return result;
     }
 
     public saveSettings(data:SettingsModel){
-        var result = this.http.post(`${this.configService.config.baseUrl}/api/Settings`, data)
+        var result = this.http.post(`${this.configService.config.baseUrl}/settings`, data)
         return result;
     }
 
     public addNewTask(data: ICardModel){
-        var result = this.http.post<ICardModel>(`${this.configService.config.baseUrl}/api/Cards`, data)
+        var result = this.http.post<ICardModel>(`${this.configService.config.baseUrl}/cards`, data)
         return result;
     }
 
     public getTasksByStatus(status: number){
-        var result = this.http.get<ICardModel[]>(`${this.configService.config.baseUrl}/api/cards?status=${status}`)       
+        var result = this.http.get<ICardModel[]>(`${this.configService.config.baseUrl}/cards?status=${status}`)       
         return result;
     }
 
     public deleteTask(id: string){
-        var result = this.http.delete<boolean>(`${this.configService.config.baseUrl}/api/cards/${id}`)       
+        var result = this.http.delete<boolean>(`${this.configService.config.baseUrl}/cards/${id}`)       
         return result;
     }
 
     public updateTask(data: ICardModel){
-        var result = this.http.put<boolean>(`${this.configService.config.baseUrl}/api/cards`, data)
+        var result = this.http.put<boolean>(`${this.configService.config.baseUrl}/cards`, data)
         return result;
     }
 

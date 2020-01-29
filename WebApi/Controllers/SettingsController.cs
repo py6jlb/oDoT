@@ -3,17 +3,11 @@ using BusinessLogic.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WebApi.Models;
-using Shared;
-using Shared.Enums;
-using System;
-using System.Linq;
-using System.Collections.Generic;
-using WebApi.Attbutes;
+using WebApi.Contracts.V1;
 
 namespace WebApi.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
     public class SettingsController : ControllerBase
     {
         private readonly ILogger<SettingsController> _logger;
@@ -25,41 +19,14 @@ namespace WebApi.Controllers
             _settingsService = settingsService;
         }
 
-        [HttpGet]
+        [HttpGet(ApiRoutes.Settings.Get)]
         public IActionResult GetSettings()
         {
             var result = _settingsService.GetSettings();
             return new JsonResult(result);
         }
 
-        [HttpGet]
-        [ExactQueryParam("refname")]
-        public IActionResult GetStatuses([FromQuery] string refname)
-        {
-            switch (refname)
-            {
-                case ("statuses"):
-                    var statuses = (CardStatusEnum[])Enum.GetValues(typeof(CardStatusEnum));
-                    var statusesList = new List<CardStatusEnum>(statuses).Select(x => new
-                    {
-                        Key = (int)x,
-                        Value = x.GetEnumDescription()
-                    });
-                    return Ok(statusesList);
-                case ("priority"):
-                    var priority = (CardPriorityEnum[])Enum.GetValues(typeof(CardPriorityEnum));
-                    var priorityList = new List<CardPriorityEnum>(priority).Select(x => new
-                    {
-                        Key = (int)x,
-                        Value = x.GetEnumDescription()
-                    });
-                    return Ok(priorityList);
-                default:
-                    return Ok();
-            }
-        }
-
-        [HttpPost]
+        [HttpPost(ApiRoutes.Settings.Update)]
         public IActionResult Post(SettingsModel model)
         {
             if (model == null)
