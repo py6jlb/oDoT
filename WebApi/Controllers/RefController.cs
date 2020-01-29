@@ -14,9 +14,9 @@ namespace WebApi.Controllers
     {
         private readonly ILogger<RefController> _logger;
 
-        public RefController(ILogger<SettingsController> logger)
+        public RefController(ILogger<RefController> logger)
         {
-;
+            _logger = logger;
         }
 
         [HttpGet(ApiRoutes.Ref.Get)]
