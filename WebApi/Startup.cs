@@ -1,8 +1,10 @@
+using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using WebApi.Hubs;
 using WebApi.StartupExtensions;
 
@@ -33,6 +35,11 @@ namespace WebApi
                                 .AllowAnyMethod();
                         });
             });
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "oDoT API" });
+                //c.ResolveConflictingActions(apiDEscr=> apiDEscr.First());
+            });
             services.AddControllers();
             services.AddSignalR();
             services.AddHealthChecks();
@@ -44,7 +51,12 @@ namespace WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseSwagger(); 
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "oDoT API");
+                c.RoutePrefix = string.Empty;
+            }); 
             app.UseCors("default");
             app.UseHttpsRedirection();
             app.UseRouting();
